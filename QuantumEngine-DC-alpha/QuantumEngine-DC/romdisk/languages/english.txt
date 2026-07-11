@@ -1,0 +1,174 @@
+FONT=/languages/en_font.txt
+
+NEW_GAME=New Game
+CONTINUE=Continue
+SELECT_LEVEL=Select Level
+HELP=Help
+OPTIONS=Settings
+EXIT=Exit
+
+LEVEL=Level
+START_GAME=Play
+RELOAD=Last Save
+SAVE_GAME=Save game
+SAVE_GAME?=Save game?
+PAUSE=Pause
+MENU=Menu
+NEXT=Next
+LOADING_SCREEN=Loading
+
+LEVEL_COMPLETE=Level Complete
+GAME_COMPLETE=Game Complete
+GAME_OVER=You died
+
+BUY_MEDICINE_CHEST=Buy Aid Kit!
+BUY_PATRONS=Buy AMMO!
+
+USE=Use
+ITEMS_COUNT=Count
+THROW_ITEM=Throw out
+ITEMS_PICKEDUP=Items picked up
+HEALTH=Health
+EMPTY_INVENTORY=Empty
+
+NOTENOUGHMONEY=Not enought money
+YES=Yes
+NO=No
+CONFIRM=Are you sure?
+MONEY=Money
+BUY=Buy
+CENA=Price
+
+SELECT=Select
+BACK=Back
+
+OFF=Off
+ON=On
+
+MAX=Max
+HQ=High
+LQ=Mid
+LLQ=Low
+
+AUDIO=Audio
+MUSIC_VOLUME=Music volume
+FOOTSTEPS_VOLUME=Footsteps volume
+SOUNDS_VOLUME=Sounds volume
+
+CONTROLS=Controls
+CAM_SPEED=Camera speed
+
+PERF=Perfomance
+DISPLAY_SIZE=Display size
+PERSQ=Textures interpolation
+TEXQ=Textures quality
+FOGQ=Fog quality
+CORPSES=Corpses
+BLOOD=Blood
+MIPMAPPING=Mipmapping
+FRAMESKIP=Frameskip
+RESIZE_WEAPONS=Resize weapons
+
+HUD=Interface
+LANG=Language
+
+HIDEHUD=Hide HUD
+DEBUG=Developer mode
+
+CHANGE_KEYS=Remap keys
+WALK_FORWARD_KEY=Walk forward
+WALK_BACKWARD_KEY=Walk backward
+WALK_LEFT_KEY=Walk left
+WALK_RIGHT_KEY=Walk right
+
+LOOK_LEFT_KEY=Look left
+LOOK_RIGHT_KEY=Look right
+LOOK_UP_KEY=Look up
+LOOK_DOWN_KEY=Look down
+
+FIRE_KEY=Fire
+JUMP_KEY=Jump
+INVENTORY_KEY=Shop
+NEXT_WEAPON_KEY=Next weapon
+PREVIOUS_WEAPON_KEY=Prev. weapon
+SIGHT_MODE_KEY=Sight mode
+FLASHLIGHT_KEY=Flashlight
+INTERACT_KEY=Interact
+
+MAIN_KEYS=<Main movement>
+SIGHT_KEYS=<Sight mode>
+OTHER_KEYS=<Other>
+
+RESET_KEYS=Reset
+RESET_ALL_KEYS=Reset all keys
+LOAD_KEYS_PRESET=Load preset
+
+HELP_TEXT=Controls:*Right Soft - Menu*Left Soft - Use/Open Shop*# - Next weapon*2,4,6,8,7,9 - Move*5 - Fire*0 - Jump*1/3 - Look Down/Up**Credits:*Engine core was developed by DDDENISSS**AE-MODS.RU 2009-2018*AE-GAMES**Qunatum created by*Roman Lahin***Maps by:*Roman Lahin*Quver*Wixel*Phirenore*1tisok6*Eagle*Connor**AHTUNG!*Maps are provided*for informational*purposes only***Thanx for testing!**Wixel*ROSTIK_BARTOSH*Pavel K.*Vaper*Kirill Stolyarov*Azazach*Eagle*Xerxesbreak*Quver*Stsyn*Quakeman
+
+
+
+
+
+GAME_HELP_TEXT_14=******Map without*borders*in textures
+
+GAME_HELP_TEXT_20=Через мгновение я очутился в городе покрытом туманом. Я увидел девочку, которая сразу же убежала. Неужели это была она, Лора? Я должен найти ее!
+GAME_HELP_TEXT_21=Кто это?
+
+GAME_HELP_TEXT_18=Bukashev go fuck yourself
+GAME_HELP_TEXT_18_2=PB beginning...*shit
+GAME_HELP_BACKGROUND_18=/images/previews/preview_0.png
+GAME_HELP_BACKGROUND_18_2=/images/previews/preview_1.png
+GAME_HELP_PREVIEW_20=/images/previews/preview_4.png
+GAME_HELP_PREVIEW_21=/images/previews/preview_5.png
+
+/maps/multylang/gfy_rus.png=/maps/multylang/gfy_eng.png
+
+LEVEL_1=Office
+LEVEL_2=Hotel
+LEVEL_3=Quver lake
+LEVEL_4=Quver Mansion
+LEVEL_5=RL city
+LEVEL_6=Multytexturing
+LEVEL_7=Bloom
+LEVEL_8=RL bridge
+LEVEL_9=Olehs Iraq
+LEVEL_10=Reflection
+LEVEL_11=Suburbs
+LEVEL_12=Quver city
+LEVEL_13=Grasstown
+LEVEL_14=Textures test
+LEVEL_15=Multylang
+LEVEL_16=Olehs cottage
+LEVEL_17=POLYLANDS
+LEVEL_18=Project Beta begining
+LEVEL_19=Project Beta final
+LEVEL_20=Silent Hill
+LEVEL_21=Silent Evil Caffe
+LEVEL_22=Entry
+LEVEL_23=CS Mobile City
+LEVEL_24=One day night...
+LEVEL_25=Mansion 1
+LEVEL_26=Mansion 2
+LEVEL_27=Village
+LEVEL_28=Entry 2
+LEVEL_29=School
+LEVEL_30=Metro
+LEVEL_31=Map from SH1
+LEVEL_32=City from Repressor
+LEVEL_33=Room from SERVERSIDE
+LEVEL_34=School with color light
+LEVEL_35=CS with color light
+LEVEL_36=Map without portals
+LEVEL_37=Stalker Mobile
+LEVEL_38=Minecraft backrooms
+LEVEL_39=NonEuclidean map
+LEVEL_40=City from metro
+LEVEL_41=Chernobyl
+LEVEL_42=MC weird house
+LEVEL_43=Glowing walls
+LEVEL_44=New map from REP3D
+
+SARA_DIALOG=Girl:* - Who are YOU?@Govard:* - My name is Govard, do you have a name?@Girl:* - erm... Its Sara.@Govard:* - Okay, Sara, What the hell are you doing here?@Sara:* - I... I dont know. I mean, I was with my parents, and all was okay, and then this awful siren sounded, all around just..go black. You know, Im just lost... and after this... I was here, in this cafe. and after this I saw YOU... and... just... WHATS GOING ON HERE? WHERES MY PARENTS? WHAT I SHOULD DO NOW? jesus christ, whats happend with me?@Govard:* - Relax, Sara. If it makes you feel better, its happend with me too. Im too looking for someone here, and looks like everything here going to hell.
+
+MEDKIT_ITEM=Medkit
+FLASHLIGHT_ITEM=Flashlight
