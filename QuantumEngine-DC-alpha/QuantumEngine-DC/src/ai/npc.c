@@ -3,6 +3,7 @@
  */
 #include "npc.h"
 #include "player.h"
+#include "../math/matrix.h"
 #include <stdlib.h>
 #include <math.h>
 

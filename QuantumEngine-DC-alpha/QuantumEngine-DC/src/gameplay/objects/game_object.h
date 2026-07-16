@@ -6,9 +6,8 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-
-typedef struct Character Character;
-typedef struct RoomObject RoomObject;
+#include "../map/room_object.h"
+#include "../map/character.h"
 
 typedef struct GameObject {
     RoomObject  base;       /* heranca: RoomObject */

@@ -6,6 +6,7 @@
 #include "zombie.h"
 #include "big_zombie.h"
 #include "npc.h"
+#include "../math/matrix.h"
 #include <stdlib.h>
 #include <math.h>
 #include <limits.h>

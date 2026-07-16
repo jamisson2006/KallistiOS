@@ -2,6 +2,7 @@
  * trace.c — porte fiel de code/AI/misc/Trace.java
  */
 #include "trace.h"
+#include "../../math/matrix.h"
 #include <stdlib.h>
 #include <math.h>
 

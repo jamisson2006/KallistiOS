@@ -2,6 +2,7 @@
  * big_zombie.c — porte fiel de code/AI/BigZombie.java
  */
 #include "big_zombie.h"
+#include "../math/matrix.h"
 #include <stdlib.h>
 #include <math.h>
 
