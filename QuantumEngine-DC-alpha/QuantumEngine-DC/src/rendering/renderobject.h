@@ -40,6 +40,9 @@ void RenderObject_render    (RenderObject *self, DirectX7 *g3d, Texture *tex);
 void RenderObject_renderFast(RenderObject *self, DirectX7 *g3d, Texture *tex);
 int  RenderObject_isVisible (RenderObject *self, int x1, int y1, int x2, int y2);
 
+int  RenderObject_getSz      (RenderObject *self);
+void RenderObject_setSz      (RenderObject *self, int sz);
+
 int  RenderObject_getLight   (RenderObject *self, Vertex *a, int la, DirectX7 *g3d);
 /* Java retorna int[3]; aqui *out sao 3 ints ja alocados pelo chamador. */
 void RenderObject_getLight3  (RenderObject *self, Vertex *a, int la, int la2, int la3, DirectX7 *g3d, int *out);

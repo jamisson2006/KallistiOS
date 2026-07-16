@@ -6,6 +6,9 @@
 #include "misc/trace.h"
 #include "../collision/ray.h"
 #include "../math/matrix.h"
+#include "../rendering/vertex.h"
+#include "../rendering/renderobject.h"
+#include "../rendering/meshes/polygon4v.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -14,9 +17,6 @@ typedef struct House        House;
 typedef struct Portal       Portal;
 typedef struct DirectX7     DirectX7;
 typedef struct Mesh         Mesh;
-typedef struct RenderObject RenderObject;
-typedef struct Vertex       Vertex;
-typedef struct Polygon4V    Polygon4V;
 
 extern int      QFPS_frameTime;
 extern bool     Main_blood;
@@ -37,22 +37,17 @@ extern Vertex **Portal_getVertices(Portal *portal, int *out_n);
 extern int      Portal_getRoom(Portal *portal);
 extern int      Portal_getRoomId(Portal *portal);
 
-extern int64_t  Character_distance(Character *a, Character *b);
-extern int      Character_getRadius(Character *ch);
-extern int      Character_getHeight(Character *ch);
-extern Vector3D *Character_getSpeed(Character *ch);
-extern void     Character_reset(Character *ch);
-extern int      Character_getPart(Character *ch);
-extern void     Character_drop(Character *ch, int speed);
-extern void     Character_dropSide(Character *ch, int speed);
-
 extern int64_t  qe_current_ms(void);
 
 extern int      MathUtils_fixDegree(int d);
 extern int      MathUtils_getAnglez(int x1, int z1, int x2, int z2);
 
-extern Polygon4V *Polygon4V_cast(RenderObject *ro);
-extern bool       RenderObject_isPolygon4V(RenderObject *ro);
+static inline bool RenderObject_isPolygon4V(RenderObject *ro) {
+    return ro->vt == Polygon4V_vt();
+}
+static inline Polygon4V *Polygon4V_cast(RenderObject *ro) {
+    return (Polygon4V *)ro;
+}
 
 bool Bot_raycastTargetVisibility = false;
 static Ray s_ray;
@@ -76,7 +71,7 @@ void Bot_set(Bot *self, Vector3D *pos) {
     Character_reset(self->base.character);
     Matrix *t = Character_getTransform(self->base.character);
     Matrix_setPosition(t, pos->x, pos->y, pos->z);
-    self->base.base.part = -1;
+    self->base.character->part = -1;
     Blood_reset(self->blood);
 }
 
@@ -147,7 +142,7 @@ void Bot_spawnBlood(Bot *self, Scene *scene) {
 
     if (Ray_isCollision(&s_ray)) {
         self->bloodwall = Bot_createTrace(self, Ray_getCollisionPoint(&s_ray), Ray_getTriangle(&s_ray));
-        self->bloodwall->base.base.part = Ray_getNumRoom(&s_ray);
+        self->bloodwall->base.character->part = Ray_getNumRoom(&s_ray);
         House_addObject(house, self->bloodwall);
     }
 }
@@ -276,6 +271,29 @@ int64_t Bot_sqr(int x) {
     return (int64_t)x * (int64_t)x;
 }
 
+GameObject *Bot_findBot(Bot *self, void **objs, int objs_n, Bot *ignore, int *fractions, int fractions_n) {
+    GameObject *nearest = NULL;
+    int64_t minDist = 0x7FFFFFFFFFFFFFFFLL;
+
+    for (int i = 0; i < objs_n; i++) {
+        GameObject *obj = (GameObject *)objs[i];
+        if (obj == (GameObject *)ignore) continue;
+        if (obj == NULL) continue;
+        if (GameObject_isDead(obj)) continue;
+
+        Bot *bot = (Bot *)obj;
+        if (!Bot_contains(fractions, fractions_n, bot->fraction)) continue;
+        if (!Bot_isTargetInFOV(&self->base, obj)) continue;
+
+        int64_t dist = Character_distance(self->base.character, obj->character);
+        if (dist < minDist) {
+            minDist = dist;
+            nearest = obj;
+        }
+    }
+    return nearest;
+}
+
 void Bot_increaseMeshSz(Mesh *mesh, int z) {
     extern RenderObject **Mesh_getPolygons(Mesh *m);
     extern int Mesh_getPolygonsCount(Mesh *m);
@@ -294,10 +312,10 @@ Trace *Bot_createTrace(Bot *self, Vector3D *vector3f, RenderObject *meshr) {
 
     if (RenderObject_isPolygon4V(meshr)) {
         Polygon4V *p4v = Polygon4V_cast(meshr);
-        Vertex *a = Polygon4V_getA(p4v);
-        Vertex *b = Polygon4V_getB(p4v);
-        Vertex *c = Polygon4V_getC(p4v);
-        Vertex *d = Polygon4V_getD(p4v);
+        Vertex *a = p4v->a;
+        Vertex *b = p4v->b;
+        Vertex *c = p4v->c;
+        Vertex *d = p4v->d;
 
         posx = (a->x + b->x + c->x + d->x) / 4;
         posy = (a->y + b->y + c->y + d->y) / 4;

@@ -46,6 +46,9 @@ void RenderObject_calculateNormalsProjected(RenderObject *self, Vertex *v1, Vert
     self->nz = (short)((double)z / sqrt_);
 }
 
+int  RenderObject_getSz(RenderObject *self)          { return self->sz; }
+void RenderObject_setSz(RenderObject *self, int sz)  { self->sz = sz; }
+
 void RenderObject_render    (RenderObject *self, DirectX7 *g3d, Texture *tex) { self->vt->render    (self, g3d, tex); }
 void RenderObject_renderFast(RenderObject *self, DirectX7 *g3d, Texture *tex) { self->vt->renderFast(self, g3d, tex); }
 int  RenderObject_isVisible (RenderObject *self, int x1, int y1, int x2, int y2) { return self->vt->isVisible(self, x1, y1, x2, y2); }

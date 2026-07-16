@@ -61,7 +61,9 @@ void Character_collisionTest(Character *self, House *house) {
     pz += self->speed.z + self->speedNoFriction.z;
 
     /* Wall collision */
+    self->collided = false;
     if (House_isWall(house, px, pz, self->player_radius, self->part)) {
+        self->collided = true;
         /* Try X only */
         int testX = self->transform.m03 + self->speed.x + self->speedNoFriction.x;
         int testZ = self->transform.m23;
@@ -171,10 +173,14 @@ void Character_rotY(Character *self, int degrees) {
     Matrix_rotY(&self->transform, degrees);
 }
 
-void Character_drop(Character *self) {
-    self->transform.m13 = self->height.floor;
-    self->speed.y = 0;
-    self->onFloor = true;
+void Character_drop(Character *self, int speed) {
+    self->transform.m11 += speed;
+    if (self->transform.m11 < 0) self->transform.m11 = 0;
+}
+
+void Character_dropSide(Character *self, int speed) {
+    self->transform.m00 += speed;
+    if (self->transform.m00 < 0) self->transform.m00 = 0;
 }
 
 void Character_setPosition(Character *self, int x, int y, int z) {
@@ -221,6 +227,10 @@ bool Character_isCollider(Character *self) {
     return self->collision;
 }
 
+bool Character_isCollision(Character *self) {
+    return self->collided;
+}
+
 bool Character_isOnFloor(Character *self) {
     return self->onFloor;
 }
@@ -244,4 +254,41 @@ void Character_setFly(Character *self, bool fly) {
 void Character_applyFriction(Character *self, float friction) {
     self->speed.x = (int)(self->speed.x * friction);
     self->speed.z = (int)(self->speed.z * friction);
+}
+
+void Character_reset(Character *self) {
+    Vector3D_set(&self->speed, 0, 0, 0);
+    Vector3D_set(&self->speedNoFriction, 0, 0, 0);
+    self->onFloor = false;
+    self->collision = true;
+    self->collidable = true;
+    self->updatable = true;
+    self->oldFloorPoly = NULL;
+}
+
+void Character_jump2(Character *self, int height, float speed) {
+    if (self->onFloor) {
+        self->speed.y = (int)(height * speed);
+        self->onFloor = false;
+    }
+}
+
+void Character_setOnFloor(Character *self, bool f) {
+    self->onFloor = f;
+}
+
+void Character_setSpeedZero(Character *self) {
+    Vector3D_set(&self->speed, 0, 0, 0);
+    Vector3D_set(&self->speedNoFriction, 0, 0, 0);
+}
+
+RenderObject *Character_getOldFloorPoly(Character *self) {
+    return self->oldFloorPoly;
+}
+
+int64_t Character_distance(Character *a, Character *b) {
+    int64_t dx = a->transform.m03 - b->transform.m03;
+    int64_t dy = a->transform.m13 - b->transform.m13;
+    int64_t dz = a->transform.m23 - b->transform.m23;
+    return dx * dx + dy * dy + dz * dz;
 }

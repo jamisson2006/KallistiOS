@@ -72,3 +72,17 @@ Character *GameObject_getCharacter(GameObject *self) {
 int GameObject_getPart(GameObject *self) {
     return Character_getPart(self->character);
 }
+
+void GameObject_setCharacterSize(GameObject *self, int height) {
+    if (self->character) {
+        self->character->player_height = height;
+    }
+}
+
+int GameObject_getFrameInter(GameObject *self) {
+    return self->frame;
+}
+
+int GameObject_getFrameInterDiv(GameObject *self) {
+    return self->frame;
+}

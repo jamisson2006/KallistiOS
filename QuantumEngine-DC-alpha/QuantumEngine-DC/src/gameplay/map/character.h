@@ -8,7 +8,8 @@
 #include "../../math/vector3d.h"
 #include "../../math/matrix.h"
 
-typedef struct House House;
+typedef struct House        House;
+typedef struct RenderObject RenderObject;
 
 typedef struct Height {
     int floor;
@@ -29,6 +30,8 @@ typedef struct Character {
     bool      collidable;
     bool      updatable;
     int       part;         /* current room/part index */
+    bool      collided;     /* wall collision detected last frame */
+    RenderObject *oldFloorPoly;
 } Character;
 
 void Character_init(Character *self, int radius, int height);
@@ -42,8 +45,10 @@ void Character_collisionTestStatic(Character *body1, Character *body2);
 void Character_moveZ(Character *self, int amount);
 void Character_moveX(Character *self, int amount);
 void Character_jump(Character *self, int force);
+void Character_jump2(Character *self, int height, float speed);
 void Character_rotY(Character *self, int degrees);
-void Character_drop(Character *self);
+void Character_drop(Character *self, int speed);
+void Character_dropSide(Character *self, int speed);
 
 /* Position */
 void Character_setPosition(Character *self, int x, int y, int z);
@@ -60,6 +65,7 @@ int      Character_getY(Character *self);
 int      Character_getZ(Character *self);
 
 bool     Character_isCollider(Character *self);
+bool     Character_isCollision(Character *self);
 bool     Character_isOnFloor(Character *self);
 
 void     Character_setCollision(Character *self, bool collision);
@@ -69,5 +75,15 @@ void     Character_setFly(Character *self, bool fly);
 
 /* Friction (called by GameObject) */
 void     Character_applyFriction(Character *self, float friction);
+
+/* Reset / utility */
+void     Character_reset(Character *self);
+void     Character_setOnFloor(Character *self, bool f);
+void     Character_setSpeedZero(Character *self);
+
+RenderObject *Character_getOldFloorPoly(Character *self);
+
+/* Distance between two characters (squared) */
+int64_t  Character_distance(Character *a, Character *b);
 
 #endif

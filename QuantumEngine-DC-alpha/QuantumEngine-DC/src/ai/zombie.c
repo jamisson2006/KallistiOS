@@ -96,7 +96,7 @@ Zombie *Zombie_new(Vector3D *pos) {
     Matrix_setIdentity(t);
     Zombie_set(self, pos);
     self->base.deathFall = Zombie_fallDeath;
-    self->base.hasBlood = BigZombie_bloodHas;
+    self->base.hasBlood = Zombie_bloodHas;
     return self;
 }
 

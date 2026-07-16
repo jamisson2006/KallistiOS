@@ -32,5 +32,8 @@ float      GameObject_getFriction(GameObject *self);
 void       GameObject_setFriction(GameObject *self, float friction);
 Character *GameObject_getCharacter(GameObject *self);
 int        GameObject_getPart(GameObject *self);
+void       GameObject_setCharacterSize(GameObject *self, int height);
+int        GameObject_getFrameInter(GameObject *self);
+int        GameObject_getFrameInterDiv(GameObject *self);
 
 #endif
