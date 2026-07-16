@@ -5,47 +5,11 @@
 # ============================================================
 TARGET = quantum.elf
 
-OBJS = \
-    src/main.o \
-    src/game.o \
-    src/core/logger.o \
-    src/core/qfps.o \
-    src/core/res.o \
-    src/core/input.o \
-    src/config/inifile.o \
-    src/render/framebuffer.o \
-    src/render/font.o \
-    src/render/raw_image.o \
-    src/render/dc_font.o \
-    src/render/qe_font.o \
-    src/math3d/matrix.o \
-    src/math3d/vector3d.o \
-    src/math3d/mathutils2.o \
-    src/collision/ray.o \
-    src/collision/height.o \
-    src/collision/raycast.o \
-    src/collision/spherecast.o \
-    src/collision/heightcomputer.o \
-    src/render3d/directx7.o \
-    src/render3d/texturing_affine.o \
-    src/render3d/polygon.o \
-    src/render3d/renderbuffer.o \
-    src/meshes/mesh.o \
-    src/meshes/multytexture.o \
-    src/utils_c/sound.o \
-    src/utils_c/asset.o \
-    src/screens/screenmgr.o \
-    src/screens/splash.o \
-    src/screens/menu.o \
-    src/screens/notimpl.o \
-    src/screens/gamescreen.o \
-    src/screens/levelselection.o \
-    src/screens/help.o \
-    src/screens/setting.o \
-    src/screens/pausescreen.o \
-    src/screens/loadingscreen.o \
-    src/gameplay/level_loader.o \
-    romdisk.o
+# Descoberta automatica de todos os .c convertidos (utils, math, rendering,
+# hud, gameplay, collision, ai) + o entry point KOS em src/main.c.
+# Evita que o Makefile fique dessincronizado da arvore real de fontes.
+SRCS = $(shell find src -name '*.c')
+OBJS = $(SRCS:.c=.o) romdisk.o
 
 KOS_ROMDISK_DIR = romdisk
 
