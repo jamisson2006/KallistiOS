@@ -3,11 +3,11 @@
  */
 #include "trace.h"
 #include "../../math/matrix.h"
+#include "../../rendering/vertex.h"
 #include <stdlib.h>
 #include <math.h>
 
 typedef struct Polygon4V    Polygon4V;
-typedef struct Vertex       Vertex;
 typedef struct Texture      Texture;
 typedef struct DirectX7     DirectX7;
 typedef struct Matrix       Matrix;
