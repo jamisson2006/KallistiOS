@@ -3,6 +3,7 @@
  */
 #include "splinter.h"
 #include <stdlib.h>
+#include <stdint.h>
 #include <limits.h>
 
 typedef struct Sprite   Sprite;

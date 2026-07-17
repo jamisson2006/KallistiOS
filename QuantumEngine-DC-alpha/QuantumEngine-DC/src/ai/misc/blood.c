@@ -2,12 +2,14 @@
  * blood.c — porte fiel de code/AI/misc/Blood.java
  */
 #include "blood.h"
+#include "../../math/vector3d.h"
 #include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 typedef struct Sprite   Sprite;
 typedef struct Texture  Texture;
 typedef struct DirectX7 DirectX7;
-typedef struct Vector3D Vector3D;
 typedef struct Matrix   Matrix;
 
 extern Sprite  *Sprite_new_scale(int scale);
