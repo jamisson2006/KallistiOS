@@ -90,7 +90,7 @@ extern int          Vertex_getRz(Vertex *v);
 
 extern int          MathUtils_fixDegree(int d);
 extern int          MathUtils_getAnglez(int x1, int z1, int x2, int z2);
-extern int          Matrix_getRotZ(Matrix *m);
+extern int          Matrix_getRotZ(const Matrix *m);
 
 extern RenderObject *Character_getOldFloorPoly(Character *ch);
 extern int           RenderObject_getSz(RenderObject *ro);
