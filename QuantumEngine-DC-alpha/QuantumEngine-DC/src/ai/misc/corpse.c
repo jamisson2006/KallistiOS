@@ -48,7 +48,7 @@ Corpse *Corpse_new(int frame2, Matrix *matrix2, MeshImage *mesh, MultyTexture *t
     Corpse *self = (Corpse *)calloc(1, sizeof(Corpse));
 
     Matrix_setIdentity(&self->mat);
-    Matrix_set(&self->mat, matrix2);
+    Matrix_set_m(&self->mat, matrix2);
 
     if (mesh != NULL) {
         self->meshImage = MeshImage_new(MeshImage_getMesh(mesh), MeshImage_getAnimation(mesh));
@@ -62,7 +62,7 @@ Corpse *Corpse_new(int frame2, Matrix *matrix2, MeshImage *mesh, MultyTexture *t
     self->f = 0;
 
     Character_reset(self->base.character);
-    Matrix_set(Character_getTransform(self->base.character), &self->mat);
+    Matrix_set_m(Character_getTransform(self->base.character), &self->mat);
     Character_setCollision(self->base.character, false);
     Character_setCollidable(self->base.character, false);
     Character_setOnFloor(self->base.character, true);
