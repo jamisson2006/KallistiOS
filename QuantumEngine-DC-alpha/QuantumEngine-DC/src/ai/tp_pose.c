@@ -445,7 +445,7 @@ void TPPose_draw(TPPose *self, Player *player, DirectX7 *g3d,
     Matrix *plmat = Character_getTransform(player->base.character);
 
     if (zoom ? self->show3DSight : self->show3D) {
-        Matrix_set(&s_mat, plmat);
+        Matrix_set_m(&s_mat, plmat);
         Matrix_setRotY(&s_tmp, 180 + (zoom ? self->rotModelYSight : self->rotModelY));
         Matrix_mul(&s_mat, &s_tmp);
         if (!(zoom ? self->rotModelXSight : self->rotModelX)) {
