@@ -1,0 +1,50 @@
+$question nocap 4
+100 денег
+50 денег
+30 денег
+0 денег
+$go 6
+$go 7
+$go 8
+$go 9
+$6:
+$cmd money=100
+$0:
+$avatar /images/screamer ava.png
+$question gen 3
+выбор
+купить автомат
+купить пистолет
+купить нож
+money>=100
+money>=50
+money>=30
+$go 1
+$go 2
+$go 3
+$go 4
+$4:
+$avatar clear
+у тебя не хватает денег ни на что!
+$end
+$3:
+$avatar clear
+ты типо купил нож
+$end
+$1:
+$avatar clear
+ты типо купил автомат
+$end
+$2:
+$avatar clear
+ты типо купил пистолет
+$end
+$7:
+$cmd money=50
+$go 0
+$8:
+$cmd money=30
+$go 0
+$9:
+$cmd money=0
+$go 0

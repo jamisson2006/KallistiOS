@@ -1,0 +1,13 @@
+# ============================================================
+#  QUANTUM ENGINE - font.txt
+#  No engine original este arquivo aponta para o PNG do font
+#  (IMG=, CHARS=, COORDS=, SPACE=).
+#
+#  No alpha do Dreamcast usamos uma fonte bitmap 8x8 embutida
+#  em C (src/render/font.c), entao estas chaves ainda nao sao
+#  lidas. Ficam aqui para compatibilidade futura com o loader
+#  de PNG.
+# ============================================================
+
+IMG=/font.png
+SPACE=6
