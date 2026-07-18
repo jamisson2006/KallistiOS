@@ -415,9 +415,10 @@ int Player_getEyesHeight(Player *self) {
 bool Player_damage(Player *self, GameObject *obj, int dmg) {
     if (DeveloperMenu_debugMode && dmg > 0 && DeveloperMenu_godMode) return true;
     if (dmg > 0) self->damaged = true;
-    if (dmg < 0 && GameObject_getHp(&self->base) - dmg > 100)
+    if (dmg < 0 && GameObject_getHp(&self->base) - dmg > 100) {
         GameObject_damage(&self->base, -(100 - GameObject_getHp(&self->base)));
         return true;
+    }
 
     GameObject_damage(&self->base, dmg);
     return true;
@@ -579,7 +580,7 @@ void Player_copyNewToUsed(Player *self) {
 
     while (Player_toAddOnStart_n > 0) {
         const char *elem = (const char *)Player_toAddOnStart[0];
-        if (!RoomObject_containsSimple(Player_usedPoints, elem)) {
+        if (!RoomObject_containsSimple(elem, (const char **)Player_usedPoints, Player_usedPoints_n)) {
             if (Player_usedPoints_n >= Player_usedPoints_cap) {
                 Player_usedPoints_cap = Player_usedPoints_cap == 0 ? 8 : Player_usedPoints_cap * 2;
                 Player_usedPoints = (void **)realloc(Player_usedPoints,
