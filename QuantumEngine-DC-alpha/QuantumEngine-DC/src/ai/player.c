@@ -89,7 +89,7 @@ extern char      *Room_getStepSound(void *room);
 extern char      *Room_getJumpSound(void *room);
 extern void       Scene_runScript(Scene *scene, void *args);
 
-extern bool       RoomObject_containsSimple(void *list, const char *name);
+extern bool       RoomObject_containsSimple(const char *name, const char **vec, int vecCount);
 
 extern int64_t    qe_current_ms(void);
 
@@ -416,7 +416,8 @@ bool Player_damage(Player *self, GameObject *obj, int dmg) {
     if (DeveloperMenu_debugMode && dmg > 0 && DeveloperMenu_godMode) return true;
     if (dmg > 0) self->damaged = true;
     if (dmg < 0 && GameObject_getHp(&self->base) - dmg > 100)
-        return GameObject_damage(&self->base, -(100 - GameObject_getHp(&self->base))) != 0;
+        GameObject_damage(&self->base, -(100 - GameObject_getHp(&self->base)));
+        return true;
 
     GameObject_damage(&self->base, dmg);
     return true;
