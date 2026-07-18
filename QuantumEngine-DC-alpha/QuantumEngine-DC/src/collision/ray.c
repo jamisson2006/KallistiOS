@@ -3,6 +3,7 @@
  */
 #include "ray.h"
 #include <limits.h>
+#include <stddef.h>
 
 void Ray_init(Ray *self) {
     self->collision = false;

@@ -2,6 +2,7 @@
  * height_computer.c — porte fiel de code/Collision/HeightComputer.java
  */
 #include "height_computer.h"
+#include <stddef.h>
 #include "../rendering/meshes/mesh.h"
 #include "../rendering/meshes/polygon3v.h"
 #include "../rendering/meshes/polygon4v.h"

@@ -3,6 +3,7 @@
  */
 #include "height.h"
 #include <limits.h>
+#include <stddef.h>
 
 void Height_init(Height *self) {
     self->height = INT32_MIN;

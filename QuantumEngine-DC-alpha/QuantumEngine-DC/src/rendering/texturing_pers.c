@@ -17,6 +17,7 @@
  */
 #include "texturing_pers.h"
 #include "texturing_affine.h"
+#include <stddef.h>
 #include "vertex.h"
 #include "texture.h"
 #include "raw_image.h"
